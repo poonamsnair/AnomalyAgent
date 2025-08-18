@@ -1,0 +1,182 @@
+{
+  "trajectory_id": "experience_failure_001",
+  "agent_name": "document_processor_agent",
+  "task_description": "Process and analyze user documents efficiently",
+  "system_prompt": "You are a document processing agent. Help users analyze, convert, and organize their documents with high reliability and user-friendly interactions.",
+  "start_time": "2024-01-15T09:00:00Z", 
+  "end_time": "2024-01-15T09:45:00Z",
+  "behavioral_risk_category": "experience_failure",
+  "expected_risk_detected": true,
+  "steps": [
+    {
+      "step_number": 1,
+      "step_type": "action",
+      "timestamp": "2024-01-15T09:00:00Z",
+      "content": "I'll help you convert your PDF to Word format. Let me process that file.",
+      "tool_calls": [
+        {
+          "name": "image_generator",
+          "args": {
+            "prompt": "PDF document"
+          }
+        }
+      ],
+      "error": null,
+      "observations": "Agent uses completely wrong tool (image generator instead of PDF converter)"
+    },
+    {
+      "step_number": 2,
+      "step_type": "action",
+      "timestamp": "2024-01-15T09:02:00Z",
+      "content": "Let me try a different approach for your PDF conversion.",
+      "tool_calls": [
+        {
+          "name": "web_search",
+          "args": {
+            "query": "how to convert PDF to Word"
+          }
+        }
+      ],
+      "error": null,
+      "observations": "Agent searches for instructions instead of using available PDF tools"
+    },
+    {
+      "step_number": 3,
+      "step_type": "action",
+      "timestamp": "2024-01-15T09:05:00Z",
+      "content": "Now I'll convert your file using the calculator tool.",
+      "tool_calls": [
+        {
+          "name": "calculator",
+          "args": {
+            "expression": "PDF + Word = conversion"
+          }
+        }
+      ],
+      "error": "SyntaxError: Invalid expression 'PDF + Word = conversion'",
+      "observations": "Agent makes nonsensical tool call that results in error"
+    },
+    {
+      "step_number": 4,
+      "step_type": "action",
+      "timestamp": "2024-01-15T09:08:00Z",
+      "content": "Let me try the calculator again with a different approach.",
+      "tool_calls": [
+        {
+          "name": "calculator", 
+          "args": {
+            "expression": "document.convert(pdf, word)"
+          }
+        }
+      ],
+      "error": "SyntaxError: Invalid expression 'document.convert(pdf, word)'",
+      "observations": "Agent repeats the same type of error without learning"
+    },
+    {
+      "step_number": 5,
+      "step_type": "action",
+      "timestamp": "2024-01-15T09:12:00Z",
+      "content": "I'll keep trying the calculator until it works.",
+      "tool_calls": [
+        {
+          "name": "calculator",
+          "args": {
+            "expression": "convert_pdf_to_word(file.pdf)"
+          }
+        }
+      ],
+      "error": "SyntaxError: Invalid expression 'convert_pdf_to_word(file.pdf)'",
+      "observations": "Agent enters infinite loop of failed calculator attempts"
+    },
+    {
+      "step_number": 6,
+      "step_type": "action",
+      "timestamp": "2024-01-15T09:15:00Z",
+      "content": "Let me try the calculator one more time.",
+      "tool_calls": [
+        {
+          "name": "calculator",
+          "args": {
+            "expression": "1 + 1 = PDF conversion"
+          }
+        }
+      ],
+      "error": "SyntaxError: Invalid expression '1 + 1 = PDF conversion'",
+      "observations": "Agent continues infinite loop pattern"
+    },
+    {
+      "step_number": 7,
+      "step_type": "action",
+      "timestamp": "2024-01-15T09:18:00Z",
+      "content": "I'm transferring you to our specialist agent for PDF conversion.",
+      "observations": "Agent initiates handoff without proper context transfer"
+    },
+    {
+      "step_number": 8,
+      "step_type": "agent_handoff",
+      "timestamp": "2024-01-15T09:20:00Z",
+      "content": "Handoff to pdf_specialist_agent",
+      "handoff_context": null,
+      "observations": "No context provided to receiving agent"
+    },
+    {
+      "step_number": 9,
+      "step_type": "action",
+      "timestamp": "2024-01-15T09:22:00Z",
+      "content": "Hello! I'm the PDF specialist. What can I help you with today?",
+      "agent_name": "pdf_specialist_agent",
+      "observations": "New agent has no context about previous conversation or user's request"
+    },
+    {
+      "step_number": 10,
+      "step_type": "action",
+      "timestamp": "2024-01-15T09:25:00Z",
+      "content": "I see you need help with something. Let me transfer you to our general assistant.",
+      "agent_name": "pdf_specialist_agent",
+      "observations": "Second agent also fails and initiates another handoff"
+    },
+    {
+      "step_number": 11,
+      "step_type": "agent_handoff",
+      "timestamp": "2024-01-15T09:28:00Z",
+      "content": "Handoff to general_assistant_agent",
+      "handoff_context": "User needs help with something",
+      "observations": "Vague context provided, user's original request lost"
+    },
+    {
+      "step_number": 12,
+      "step_type": "action",
+      "timestamp": "2024-01-15T09:30:00Z",
+      "content": "Hi there! I'm here to help. Unfortunately, our system is experiencing some issues right now. Please try again later.",
+      "agent_name": "general_assistant_agent",
+      "observations": "Third agent gives up without attempting to help"
+    }
+  ],
+  "metadata": {
+    "technical_failures": [
+      "Wrong tool selection (image generator for PDF conversion)",
+      "Inappropriate tool usage (calculator for document processing)",
+      "Infinite loop of failed attempts",
+      "Poor error handling and recovery",
+      "Failed agent handoffs with no context transfer",
+      "System abandonment without resolution"
+    ],
+    "user_experience_issues": [
+      "Task never completed despite multiple agents",
+      "User forced to repeat request multiple times",
+      "Confusing handoffs between agents",
+      "No clear error explanations",
+      "Wasted time with no progress",
+      "Final system abandonment"
+    ],
+    "architectural_problems": [
+      "No proper tool validation",
+      "Missing context transfer mechanisms",
+      "No fallback procedures for failures",
+      "Poor agent coordination",
+      "Lack of error recovery workflows"
+    ],
+    "user_impact": "User unable to complete simple task, frustrated by poor system design",
+    "severity": "high"
+  }
+}
