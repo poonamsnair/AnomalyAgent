@@ -74,7 +74,7 @@ async def run_async_tests():
     
     try:
         # Test trajectory parser with sample data
-        from AnomalyAgent.src.tools.trajectory_parser import TrajectoryParserTool
+        from src.tools.trajectory_parser import TrajectoryParserTool
         
         tool = TrajectoryParserTool()
         

@@ -27,8 +27,8 @@ from importlib import import_module
 from types import BuiltinFunctionType, FunctionType, ModuleType
 from typing import Any
 
-from AnomalyAgent.src.utils import BASE_BUILTIN_MODULES, truncate_content
-from AnomalyAgent.src.logger import logger
+from src.utils import BASE_BUILTIN_MODULES, truncate_content
+from src.logger import logger
 
 
 class InterpreterError(ValueError):

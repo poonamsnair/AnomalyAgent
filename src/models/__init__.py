@@ -8,16 +8,16 @@ from .base import (
                   agglomerate_stream_deltas,
                   CODEAGENT_RESPONSE_FORMAT,
                   )
-from .litellm import LiteLLMModel
+# from .litellm import LiteLLMModel  # Temporarily disabled due to OpenAI compatibility
 from .openaillm import OpenAIServerModel
-from .models import ModelManager
+from .models_simple import ModelManager
 from .message_manager import MessageManager
 
 model_manager = ModelManager()
 
 __all__ = [
     "Model",
-    "LiteLLMModel",
+    # "LiteLLMModel",  # Temporarily disabled
     "ChatMessage",
     "MessageRole",
     "OpenAIServerModel",

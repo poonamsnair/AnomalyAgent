@@ -4,15 +4,15 @@ from typing import Any, Dict, List, Union
 from datetime import datetime
 from dataclasses import asdict
 
-from AnomalyAgent.src.tools.tools import AsyncTool, ToolResult
-from AnomalyAgent.src.registry import TOOL
-from AnomalyAgent.src.memory.memory import (
+from src.tools.tools import AsyncTool, ToolResult
+from src.registry import TOOL
+from src.memory.memory import (
     ActionStep, PlanningStep, TaskStep, SystemPromptStep, FinalAnswerStep,
     ToolCall, AgentMemory
 )
-from AnomalyAgent.src.models import ChatMessage, MessageRole
-from AnomalyAgent.src.logger import Timing, TokenUsage
-from AnomalyAgent.src.exception import AgentError
+from src.models import ChatMessage, MessageRole
+from src.logger import Timing, TokenUsage
+from src.exception import AgentError
 
 
 @TOOL.register_module(name="trajectory_parser_tool", force=True)

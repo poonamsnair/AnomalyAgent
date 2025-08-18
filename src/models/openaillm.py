@@ -1,14 +1,14 @@
 from typing import Any
 from collections.abc import Generator
 
-from AnomalyAgent.src.models.base import (ApiModel,
+from src.models.base import (ApiModel,
                              ChatMessage,
                              tool_role_conversions,
                              MessageRole,
                              TokenUsage,
                              ChatMessageStreamDelta,
                              ChatMessageToolCallStreamDelta)
-from AnomalyAgent.src.models.message_manager import MessageManager
+from src.models.message_manager import MessageManager
 
 class OpenAIServerModel(ApiModel):
     """This model connects to an OpenAI-compatible API server.

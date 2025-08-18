@@ -8,7 +8,7 @@ from typing import Dict, List, Any
 # Add the root directory to the path so we can import from AnomalyAgent
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 
-from AnomalyAgent.src.tools.trajectory_parser import TrajectoryParserTool
+from src.tools.trajectory_parser import TrajectoryParserTool
 
 
 class TestBehavioralRiskTestData:

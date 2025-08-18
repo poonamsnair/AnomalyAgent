@@ -39,7 +39,7 @@ from huggingface_hub import (
     metadata_update,
 )
 
-from AnomalyAgent.src.utils import (
+from src.utils import (
     _convert_type_hints_to_json_schema,
     get_imports,
     get_json_schema,
@@ -49,14 +49,14 @@ from AnomalyAgent.src.utils import (
     is_valid_name,
 )
 
-from AnomalyAgent.src.tools.tool_validation import MethodChecker, validate_tool_attributes
+from src.tools.tool_validation import MethodChecker, validate_tool_attributes
 
 
 if TYPE_CHECKING:
     import mcp
 
 
-from AnomalyAgent.src.logger import logger
+from src.logger import logger
 
 
 def validate_after_init(cls):

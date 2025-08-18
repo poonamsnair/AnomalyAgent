@@ -1,8 +1,8 @@
 from typing import Dict, List, Optional, Any
 from copy import deepcopy
 
-from AnomalyAgent.src.models.base import MessageRole, ChatMessage
-from AnomalyAgent.src.utils import encode_image_base64, make_image_url
+from src.models.base import MessageRole, ChatMessage
+from src.utils import encode_image_base64, make_image_url
 
 DEFAULT_ANTHROPIC_MODELS = [
     'claude37-sonnet',

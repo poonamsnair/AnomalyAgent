@@ -1,5 +1,5 @@
-from AnomalyAgent.src.tools.tools import AsyncTool, ToolResult
-from AnomalyAgent.src.registry import TOOL
+from src.tools.tools import AsyncTool, ToolResult
+from src.registry import TOOL
 
 @TOOL.register_module(name="final_answer_tool", force=True)
 class FinalAnswerTool(AsyncTool):

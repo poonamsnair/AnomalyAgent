@@ -6,9 +6,9 @@ import time
 from datetime import datetime, timedelta
 from unittest.mock import patch, MagicMock
 
-from AnomalyAgent.src.session import SessionManager, RuntimeSession, AgentStep, RiskAssessment
-from AnomalyAgent.src.session.models import AgentStepRequest, ToolCall
-from AnomalyAgent.src.session.session_manager import (
+from src.session import SessionManager, RuntimeSession, AgentStep, RiskAssessment
+from src.session.models import AgentStepRequest, ToolCall
+from src.session.session_manager import (
     SessionNotFoundError, 
     SessionExpiredError, 
     InvalidStepDataError
@@ -470,7 +470,7 @@ class TestSessionManager:
         )
         
         # Mock an error during step creation
-        with patch('AnomalyAgent.src.session.session_manager.AgentStep') as mock_agent_step:
+        with patch('src.session.session_manager.AgentStep') as mock_agent_step:
             mock_agent_step.side_effect = ValueError("Invalid data")
             
             with pytest.raises(InvalidStepDataError):

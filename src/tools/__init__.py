@@ -1,8 +1,8 @@
 # Tools for anomaly detection and trajectory analysis
-from AnomalyAgent.src.tools.tools import Tool, ToolResult, AsyncTool, make_tool_instance
-from AnomalyAgent.src.tools.trajectory_parser import TrajectoryParserTool
-from AnomalyAgent.src.tools.python_interpreter import PythonInterpreterTool
-from AnomalyAgent.src.tools.final_answer import FinalAnswerTool
+from src.tools.tools import Tool, ToolResult, AsyncTool, make_tool_instance
+from src.tools.trajectory_parser import TrajectoryParserTool
+from src.tools.python_interpreter import PythonInterpreterTool
+from src.tools.final_answer import FinalAnswerTool
 
 __all__ = [
     "Tool",

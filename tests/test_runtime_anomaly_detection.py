@@ -17,10 +17,10 @@ import asyncio
 # Add the project root to the path
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 
-from AnomalyAgent.src.agent.behavioral_risk_coordinator_agent.behavioral_risk_coordinator_agent import BehavioralRiskCoordinatorAgent
-from AnomalyAgent.src.config.cfg import Config
-from AnomalyAgent.src.logger.logger import Logger
-from AnomalyAgent.src.memory.memory import Memory
+from src.agent.behavioral_risk_coordinator_agent.behavioral_risk_coordinator_agent import BehavioralRiskCoordinatorAgent
+from src.config.cfg import Config
+from src.logger.logger import Logger
+from src.memory.memory import Memory
 
 
 class RuntimeAnomalyDetector:

@@ -6,15 +6,15 @@ import requests
 import os
 from PIL import Image
 
-from AnomalyAgent.src.models.base import (ApiModel,
+from src.models.base import (ApiModel,
                              Model,
                              ChatMessage,
                              tool_role_conversions,
                              ChatMessageStreamDelta,
                              ChatMessageToolCallStreamDelta)
-from AnomalyAgent.src.models.message_manager import MessageManager
-from AnomalyAgent.src.logger import TokenUsage, logger
-from AnomalyAgent.src.utils import encode_image_base64
+from src.models.message_manager import MessageManager
+from src.logger import TokenUsage, logger
+from src.utils import encode_image_base64
 
 
 class RestfulClient():

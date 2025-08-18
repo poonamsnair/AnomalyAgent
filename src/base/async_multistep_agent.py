@@ -45,23 +45,23 @@ from rich.text import Text
 if TYPE_CHECKING:
     import PIL.Image
 
-from AnomalyAgent.src.tools.final_answer import FinalAnswerTool
-from AnomalyAgent.src.tools.default_tools import TOOL_MAPPING
-from AnomalyAgent.src.tools.executor.local_python_executor import BASE_BUILTIN_MODULES
-from AnomalyAgent.src.memory import (ActionStep,
+from src.tools.final_answer import FinalAnswerTool
+from src.tools.default_tools import TOOL_MAPPING
+from src.tools.executor.local_python_executor import BASE_BUILTIN_MODULES
+from src.memory import (ActionStep,
                         AgentMemory,
                         FinalAnswerStep,
                         PlanningStep,
                         SystemPromptStep,
                         UserPromptStep,
                         TaskStep)
-from AnomalyAgent.src.models import (
+from src.models import (
     ChatMessage,
     ChatMessageStreamDelta,
     ChatMessageToolCall,
     MessageRole,
 )
-from AnomalyAgent.src.logger import (
+from src.logger import (
     AgentLogger,
     LogLevel,
     Monitor,
@@ -69,8 +69,8 @@ from AnomalyAgent.src.logger import (
     TokenUsage,
 )
 
-from AnomalyAgent.src.tools import AsyncTool
-from AnomalyAgent.src.exception import (
+from src.tools import AsyncTool
+from src.exception import (
     AgentError,
     AgentGenerationError,
     AgentMaxStepsError,
@@ -78,16 +78,16 @@ from AnomalyAgent.src.exception import (
 
 )
 
-from AnomalyAgent.src.utils import (
+from src.utils import (
     is_valid_name,
     make_init_file,
     truncate_content,
     handle_agent_output_types,
 )
 
-from AnomalyAgent.src.logger import logger
-from AnomalyAgent.src.models import Model
-from AnomalyAgent.src.base.multistep_agent import (ActionOutput,
+from src.logger import logger
+from src.models import Model
+from src.base.multistep_agent import (ActionOutput,
                                       ToolOutput,
                                       RunResult,
                                       StreamEvent)

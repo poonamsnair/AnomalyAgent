@@ -13,8 +13,8 @@ root_dir = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(root_dir))
 
 from datetime import datetime
-from AnomalyAgent.src.session import SessionManager, RuntimeSession, AgentStep, RiskAssessment
-from AnomalyAgent.src.session.models import AgentStepRequest, ToolCall
+from src.session import SessionManager, RuntimeSession, AgentStep, RiskAssessment
+from src.session.models import AgentStepRequest, ToolCall
 
 
 def test_runtime_session():

@@ -28,39 +28,39 @@ from collections.abc import Generator
 if TYPE_CHECKING:
     import PIL.Image
 
-from AnomalyAgent.src.memory import (ActionStep,
+from src.memory import (ActionStep,
                         ToolCall)
-from AnomalyAgent.src.models import (
+from src.models import (
     ChatMessage,
     ChatMessageStreamDelta,
 )
-from AnomalyAgent.src.logger import (
+from src.logger import (
     LogLevel,
 )
 
-from AnomalyAgent.src.tools import Tool
-from AnomalyAgent.src.exception import (
+from src.tools import Tool
+from src.exception import (
     AgentParsingError,
     AgentToolCallError,
     AgentToolExecutionError,
     AgentGenerationError,
     AgentExecutionError,
 )
-from AnomalyAgent.src.base.multistep_agent import (MultiStepAgent,
+from src.base.multistep_agent import (MultiStepAgent,
                                       PromptTemplates,
                                       populate_template,
                                       ToolOutput,
                                       StreamEvent)
-from AnomalyAgent.src.models import (Model,
+from src.models import (Model,
                         agglomerate_stream_deltas,
                         parse_json_if_needed)
-from AnomalyAgent.src.utils import (
+from src.utils import (
     AgentImage,
     AgentAudio,
     AgentText,
 )
 
-from AnomalyAgent.src.logger import logger, YELLOW_HEX
+from src.logger import logger, YELLOW_HEX
 
 class ToolCallingAgent(MultiStepAgent):
     """

@@ -26,35 +26,35 @@ from rich.text import Text
 if TYPE_CHECKING:
     import PIL.Image
 
-from AnomalyAgent.src.memory import (ActionStep,
+from src.memory import (ActionStep,
                         ToolCall)
-from AnomalyAgent.src.models import (
+from src.models import (
     ChatMessage,
 )
-from AnomalyAgent.src.logger import (
+from src.logger import (
     LogLevel,
 )
 
-from AnomalyAgent.src.tools import Tool
-from AnomalyAgent.src.tools.executor.local_python_executor import LocalPythonExecutor, PythonExecutor, fix_final_answer_code
-from AnomalyAgent.src.tools.executor.remote_executors import DockerExecutor, E2BExecutor
-from AnomalyAgent.src.exception import (
+from src.tools import Tool
+from src.tools.executor.local_python_executor import LocalPythonExecutor, PythonExecutor, fix_final_answer_code
+from src.tools.executor.remote_executors import DockerExecutor, E2BExecutor
+from src.exception import (
     AgentParsingError,
     AgentExecutionError,
     AgentGenerationError,
 )
 
-from AnomalyAgent.src.utils import (
+from src.utils import (
     BASE_BUILTIN_MODULES,
     truncate_content,
     parse_code_blobs,
     extract_code_from_text
 )
 
-from AnomalyAgent.src.base.multistep_agent import MultiStepAgent, PromptTemplates, populate_template, ActionOutput
-from AnomalyAgent.src.models import Model, ChatMessageStreamDelta, agglomerate_stream_deltas, CODEAGENT_RESPONSE_FORMAT
+from src.base.multistep_agent import MultiStepAgent, PromptTemplates, populate_template, ActionOutput
+from src.models import Model, ChatMessageStreamDelta, agglomerate_stream_deltas, CODEAGENT_RESPONSE_FORMAT
 
-from AnomalyAgent.src.logger import YELLOW_HEX
+from src.logger import YELLOW_HEX
 
 class CodeAgent(MultiStepAgent):
     """

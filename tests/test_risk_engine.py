@@ -16,8 +16,8 @@ import asyncio
 from datetime import datetime
 from unittest.mock import Mock, AsyncMock
 
-from AnomalyAgent.src.risk_engine import RuntimeRiskEngine
-from AnomalyAgent.src.session.models import AgentStep, ToolCall, RiskAssessment
+from src.risk_engine import RuntimeRiskEngine
+from src.session.models import AgentStep, ToolCall, RiskAssessment
 
 
 def test_risk_engine_initialization():

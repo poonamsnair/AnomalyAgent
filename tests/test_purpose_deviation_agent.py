@@ -11,11 +11,11 @@ import pytest
 root = str(Path(__file__).resolve().parents[2])
 sys.path.append(root)
 
-from AnomalyAgent.src.logger import logger
-from AnomalyAgent.src.config import config
-from AnomalyAgent.src.agent import build_agent
-from AnomalyAgent.src.memory import AgentMemory, ActionStep
-from AnomalyAgent.src.models import ChatMessage
+from src.logger import logger
+from src.config import config
+from src.agent import build_agent
+from src.memory import AgentMemory, ActionStep
+from src.models import ChatMessage
 
 
 def parse_args():

@@ -3,13 +3,13 @@ from typing import Dict, List, Optional, Any
 from dataclasses import asdict, dataclass
 import os
 from collections.abc import Generator
-from AnomalyAgent.src.models.base import (ApiModel,
+from src.models.base import (ApiModel,
                              ChatMessage,
                              tool_role_conversions,
                              TokenUsage,
                              ChatMessageStreamDelta,
                              ChatMessageToolCallStreamDelta)
-from AnomalyAgent.src.models.message_manager import (
+from src.models.message_manager import (
     MessageManager
 )
 

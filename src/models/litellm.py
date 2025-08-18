@@ -2,14 +2,14 @@ import warnings
 from typing import Dict, List, Optional, Any
 from collections.abc import Generator
 
-from AnomalyAgent.src.models.base import (ApiModel,
+from src.models.base import (ApiModel,
                              ChatMessage,
                              ChatMessageStreamDelta,
                              ChatMessageToolCallStreamDelta,
                              tool_role_conversions,
                              TokenUsage
                              )
-from AnomalyAgent.src.models.message_manager import (
+from src.models.message_manager import (
     MessageManager
 )
 

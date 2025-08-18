@@ -23,8 +23,8 @@ sys.modules['src.models'] = Mock()
 sys.modules['src.agent'] = Mock()
 
 # Import after mocking
-from AnomalyAgent.src.session import SessionManager
-from AnomalyAgent.src.session.models import CreateSessionRequest, AssessStepRequest
+from src.session import SessionManager
+from src.session.models import CreateSessionRequest, AssessStepRequest
 
 
 def test_session_endpoints_logic():

@@ -25,8 +25,8 @@ from enum import Enum
 from threading import Thread
 from typing import TYPE_CHECKING, Any
 
-from AnomalyAgent.src.logger import TokenUsage
-from AnomalyAgent.src.utils import (_is_package_available,
+from src.logger import TokenUsage
+from src.utils import (_is_package_available,
                        encode_image_base64, 
                        make_image_url, 
                        parse_json_blob)
