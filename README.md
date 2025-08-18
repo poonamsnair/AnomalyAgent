@@ -1,6 +1,12 @@
 # AnomalyAgent - Behavioral Risk Detection API
 
+[![Deployment Status](https://img.shields.io/badge/Status-Live-brightgreen)](https://8081-i6ebstkn8678no6p36fel-6532622b.e2b.dev/health)
+[![API Health](https://img.shields.io/badge/API-Healthy-green)](https://8081-i6ebstkn8678no6p36fel-6532622b.e2b.dev/health)
+[![Models Loaded](https://img.shields.io/badge/Models-4%20Active-blue)](https://8081-i6ebstkn8678no6p36fel-6532622b.e2b.dev/health)
+
 A FastAPI-based system for detecting behavioral risks in AI agent trajectories using advanced risk assessment and session management.
+
+**🎯 Live API Server**: https://8081-i6ebstkn8678no6p36fel-6532622b.e2b.dev
 
 ## 🚀 Features
 
@@ -34,11 +40,12 @@ A FastAPI-based system for detecting behavioral risks in AI agent trajectories u
 ### Setup
 ```bash
 # Clone the repository
-git clone <your-repo-url>
+git clone https://github.com/poonamsnair/AnomalyAgent.git
 cd AnomalyAgent
 
 # Install dependencies
 pip install -r requirements.txt
+pip install fastapi uvicorn supervisor
 
 # Set environment variables
 export OPENAI_API_KEY="your-api-key-here"
@@ -46,6 +53,8 @@ export OPENAI_API_KEY="your-api-key-here"
 # Start the server
 python3.11 api_server.py
 ```
+
+> 📖 **For detailed deployment instructions**, see [DEPLOYMENT.md](DEPLOYMENT.md)
 
 ## 📡 API Endpoints
 
