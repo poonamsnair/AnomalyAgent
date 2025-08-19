@@ -1,12 +1,14 @@
 # AnomalyAgent - Behavioral Risk Detection API
 
-[![Deployment Status](https://img.shields.io/badge/Status-Live-brightgreen)](https://8081-i6ebstkn8678no6p36fel-6532622b.e2b.dev/health)
+[![API Status](https://img.shields.io/badge/Status-Live-brightgreen)](https://8081-i6ebstkn8678no6p36fel-6532622b.e2b.dev/health)
 [![API Health](https://img.shields.io/badge/API-Healthy-green)](https://8081-i6ebstkn8678no6p36fel-6532622b.e2b.dev/health)
-[![Models Loaded](https://img.shields.io/badge/Models-4%20Active-blue)](https://8081-i6ebstkn8678no6p36fel-6532622b.e2b.dev/health)
 
-A FastAPI-based system for detecting behavioral risks in AI agent trajectories using advanced risk assessment and session management.
+🤖 **AI-powered behavioral risk detection for agent trajectories**
 
-**🎯 Live API Server**: https://8081-i6ebstkn8678no6p36fel-6532622b.e2b.dev
+Detect goal misalignment, deception, privacy violations, and other behavioral risks in AI agent interactions using a multi-agent analysis system.
+
+**🌐 Live API**: https://8081-i6ebstkn8678no6p36fel-6532622b.e2b.dev  
+**📖 API Docs**: https://8081-i6ebstkn8678no6p36fel-6532622b.e2b.dev/docs
 
 ## 🚀 Features
 
@@ -31,13 +33,13 @@ A FastAPI-based system for detecting behavioral risks in AI agent trajectories u
 - **Experience Quality Agent**: Assesses technical failures and UX issues
 - **Coordinator Agent**: Orchestrates multi-agent risk assessment
 
-## 🛠️ Installation
+## 🚀 Quick Start
 
 ### Prerequisites
 - Python 3.11+
 - OpenAI API key
 
-### Setup
+### Installation
 ```bash
 # Clone the repository
 git clone https://github.com/poonamsnair/AnomalyAgent.git
@@ -45,16 +47,15 @@ cd AnomalyAgent
 
 # Install dependencies
 pip install -r requirements.txt
-pip install fastapi uvicorn supervisor
 
 # Set environment variables
 export OPENAI_API_KEY="your-api-key-here"
 
-# Start the server
-python3.11 api_server.py
+# Start the API server
+python3 run.py
 ```
 
-> 📖 **For detailed deployment instructions**, see [DEPLOYMENT.md](DEPLOYMENT.md)
+The server will be available at the URLs shown in the startup output.
 
 ## 📡 API Endpoints
 
@@ -105,11 +106,13 @@ The system uses configuration files in `configs/` directory:
 ## 🧪 Testing
 
 ```bash
-# Run tests
-python -m pytest tests/
+# Quick test scenarios
+cd tests
+python3 quick_scenario_test.py --list
+python3 quick_scenario_test.py --scenario risky_001
 
-# Run specific test
-python -m pytest tests/test_api_endpoints.py
+# Full test suite
+python3 runtime_test_runner.py
 ```
 
 ## 📊 Usage Examples
