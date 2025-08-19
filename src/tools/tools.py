@@ -1271,6 +1271,15 @@ def make_tool_instance(agent):
     )
 
     tool_instance = tool_cls()
+    
+    # Initialize inputs for AsyncTool compatibility
+    tool_instance.inputs = {
+        "task": {
+            "type": "any",
+            "description": "The task to be executed by the team member."
+        }
+    }
+    tool_instance.is_initialized = True
 
     return tool_instance
 

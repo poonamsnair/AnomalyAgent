@@ -88,7 +88,8 @@ class OpenAIServerModel(ApiModel):
                     "Please install 'openai' extra to use OpenAIServerModel: `pip install 'smolagents[openai]'`"
                 ) from e
 
-            return openai.OpenAI(
+            # Create async client for await compatibility
+            return openai.AsyncOpenAI(
                 **self.client_kwargs
             )
 

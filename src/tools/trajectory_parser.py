@@ -35,6 +35,20 @@ class TrajectoryParserTool(AsyncTool):
         "required": ["trajectory_data", "format_type"],
     }
     output_type = "string"
+    
+    def __init__(self):
+        super().__init__()
+        self.inputs = {
+            "trajectory_data": {
+                "type": "string",
+                "description": "Raw trajectory data in JSON/JSONL format or file path to trajectory file"
+            },
+            "format_type": {
+                "type": "string",
+                "description": "Input format type: 'json', 'jsonl', or 'skywork'"
+            }
+        }
+        self.is_initialized = True
 
     async def forward(self, trajectory_data: str, format_type: str) -> ToolResult:
         """

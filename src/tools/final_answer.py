@@ -17,6 +17,17 @@ class FinalAnswerTool(AsyncTool):
     }
     output_type = "any"
 
+    def __init__(self):
+        super().__init__()
+        # Initialize inputs for AsyncTool compatibility
+        self.inputs = {
+            "answer": {
+                "type": "string",
+                "description": "The final answer to the problem."
+            }
+        }
+        self.is_initialized = True
+
     async def forward(self, answer: str) -> ToolResult:
         result = ToolResult(
             output=answer,

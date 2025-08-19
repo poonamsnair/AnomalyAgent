@@ -23,10 +23,13 @@ class PythonInterpreterTool(AsyncTool):
     output_type = "any"
 
     def __init__(self, *args, authorized_imports=None, **kwargs):
+        super().__init__(*args, **kwargs)
+        
         if authorized_imports is None:
             self.authorized_imports = list(set(BASE_BUILTIN_MODULES))
         else:
             self.authorized_imports = list(set(BASE_BUILTIN_MODULES) | set(authorized_imports))
+        
         self.parameters = {
             "type": "object",
             "properties": {
@@ -40,9 +43,21 @@ class PythonInterpreterTool(AsyncTool):
             },
             "required": ["code"],
         }
+        
+        # Initialize inputs for AsyncTool compatibility
+        self.inputs = {
+            "code": {
+                "type": "string",
+                "description": (
+                    "The code snippet to evaluate. All variables used in this snippet must be defined in this same snippet, "
+                    f"else you will get an error. This code can only import the following python libraries: {self.authorized_imports}."
+                )
+            }
+        }
+        
         self.base_python_tools = BASE_PYTHON_TOOLS
         self.python_evaluator = evaluate_python_code
-        super().__init__(*args, **kwargs)
+        self.is_initialized = True
 
     async def forward(self, code: str) -> ToolResult:
 
