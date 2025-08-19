@@ -138,3 +138,18 @@ supervisor.sock
 test_results.json
 validation_results.json
 practical_test_results.json
+*.jsonl
+
+# Temporary documentation files
+*_REPORT.md
+*_RESULTS.md
+*_SUMMARY.md
+DEPLOYMENT.md
+ENHANCEMENT*.md
+VALIDATION*.md
+COMPREHENSIVE*.md
+PRODUCTION*.md
+
+# Runtime files
+*.pid
+supervisor.sock
