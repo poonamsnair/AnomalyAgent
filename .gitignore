@@ -128,3 +128,13 @@ supervisord.pid
 *.log
 logs/
 test_logs/
+api_server.log
+api_server_error.log
+behavioral_risk_detection.log
+supervisord.log
+supervisor.sock
+
+# Test results
+test_results.json
+validation_results.json
+practical_test_results.json

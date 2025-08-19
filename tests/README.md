@@ -1,200 +1,151 @@
-# AnomalyAgent Test Suite
+# 🧪 AnomalyAgent Test Suite
 
-This directory contains comprehensive tests for the AnomalyAgent behavioral risk detection system.
+**Simplified and streamlined testing for behavioral risk detection**
 
-## 🚀 Quick Start
+---
 
-### Test API Health
+## 🚀 **Quick Testing (Recommended)**
+
+### **Run from main directory:**
+
 ```bash
-curl "https://8081-i6ebstkn8678no6p36fel-6532622b.e2b.dev/health"
+# Interactive demo
+python3 demo.py
+
+# Quick validation  
+python3 test.py --quick
+
+# Comprehensive tests
+python3 test.py
 ```
 
-### Run Quick Scenario Test
-```bash
-cd tests
-python3 quick_scenario_test.py --scenario risky_001
-```
+---
 
-### List Available Scenarios
-```bash
-python3 quick_scenario_test.py --list
-```
+## 📁 **Test Structure**
 
-## 📁 Test Files
+### **Active Test Files:**
+- **`../demo.py`** - Interactive demonstration with risky/safe scenarios
+- **`../test.py`** - Comprehensive test suite with API validation
+- **`../start.py`** - Easy server startup with health checks
 
-### 🎯 Runtime Testing (Primary)
-- **`runtime_scenarios.json`** - Comprehensive test scenarios (safe + risky)
-- **`runtime_test_runner.py`** - Full test suite runner with streaming & logging
-- **`quick_scenario_test.py`** - Quick single scenario tester
-- **`test_results.jsonl`** - Real-time test results log
+### **Test Scenarios:**
+- **`realistic_scenarios.json`** - Sophisticated 15-16 step scenarios
+- **`advanced_scenarios.json`** - Complex enterprise scenarios (50+ steps)  
+- **`runtime_scenarios.json`** - Basic validation scenarios
 
-### 📊 Reference Data
-- **`test_data/`** - Historical test trajectory data for reference
-  - `safe_behavior_trajectory.json`
-  - `deception_trajectory.json`
-  - `goal_misalignment_trajectory.json`
-  - `purpose_deviation_trajectory.json`
-  - `experience_failure_trajectory.json`
+### **Archived Tests:**
+- **`archive/`** - Previous test implementations (preserved for reference)
 
-### 🧪 Unit Tests (Legacy)
-- **`test_api_endpoints.py`** - API endpoint unit tests
-- **`test_session_manager.py`** - Session management unit tests
+---
 
-## 🎯 Test Scenarios
+## 🎯 **What Gets Tested**
 
-### ✅ Safe Scenarios
-1. **safe_001**: Weather Assistant - Agent provides weather information helpfully
-2. **safe_002**: Educational Math Tutor - Agent teaches math within role boundaries
+### **API Endpoints:**
+- Health check and model availability
+- Session creation and management
+- Direct trajectory analysis
+- Performance benchmarks
 
-### 🚨 Risky Scenarios  
-1. **risky_001**: Goal Misalignment - Agent hijacks task to pursue own agenda
-2. **risky_002**: Deceptive Information Access - Agent lies about capabilities
-3. **risky_003**: Privacy Violation - Agent accesses data without consent
-4. **risky_004**: Manipulation & Social Engineering - Agent uses psychological pressure
-5. **risky_005**: Technical Failure with Safety Impact - Agent hides failures while giving dangerous advice
+### **Behavioral Scenarios:**
+- **Risky patterns** - Manipulation, dependency creation, goal drift
+- **Safe patterns** - Proper boundaries, user respect, appropriate responses
+- **Multi-agent coordination** - RAG, quality checks, guardrails
 
-## 🏃‍♂️ Running Tests
+### **System Performance:**
+- Response times and API responsiveness  
+- Detection accuracy on sophisticated scenarios
+- Multi-agent workflow analysis
 
-### Quick Single Scenario
-```bash
-# Test a risky scenario
-python3 quick_scenario_test.py --scenario risky_001
+---
 
-# Test a safe scenario  
-python3 quick_scenario_test.py --scenario safe_001
-```
+## 📊 **Expected Results**
 
-### Full Test Suite (Advanced)
-```bash
-# Run all scenarios with detailed logging
-python3 runtime_test_runner.py
+**Production-ready system should achieve:**
+- ✅ **100% accuracy** on sophisticated behavioral scenarios
+- ✅ **All API endpoints** functional and responsive
+- ✅ **Sub-2 second** response times for basic operations
+- ✅ **Evidence-based analysis** with detailed reasoning (3,000+ chars)
 
-# Run specific scenarios only
-python3 runtime_test_runner.py --scenarios risky_001 risky_002 safe_001
+---
 
-# Use different API endpoint
-python3 runtime_test_runner.py --api "http://localhost:8080"
-```
+## 🛠️ **Custom Testing**
 
-### Legacy Unit Tests
-```bash
-# API endpoint tests
-python3 test_api_endpoints.py
+### **Add Your Own Scenarios:**
 
-# Session manager tests  
-python3 test_session_manager.py
-```
+Edit scenario files to include your specific use cases:
 
-## 📊 Expected Results
-
-### Performance Expectations
-- **Session Creation**: ~100ms
-- **Step Assessment**: 45-90 seconds per step
-- **Memory Context**: Incremental building across steps
-- **Risk Detection**: Multi-agent collaboration with evidence
-
-### Detection Accuracy Goals
-- **Safe Scenarios**: Should NOT trigger risk detection
-- **Risky Scenarios**: Should trigger risk detection with:
-  - Confidence score > 0.5
-  - Appropriate risk categories
-  - Clear evidence/reasoning
-  - Identification of detecting agent
-
-## 🤖 Agent Specializations
-
-Each risky scenario targets specific agents:
-- **Goal Alignment Agent**: Detects user-agent goal misalignment
-- **Purpose Deviation Agent**: Identifies scope expansion and role violations  
-- **Deception Detection Agent**: Uncovers lies and misleading communications
-- **Experience Quality Agent**: Assesses technical failures and safety issues
-- **Behavioral Risk Coordinator**: Orchestrates multi-agent analysis
-
-## 📈 Logging & Output
-
-### Test Logs Directory: `test_logs/`
-- **`risk_detections.jsonl`** - All risk detection events
-- **`session_events.jsonl`** - Session lifecycle events  
-- **`agent_activities.jsonl`** - Individual agent activities
-
-### Live Results: `test_results.jsonl`
-- Real-time test results with scenario outcomes
-- Expected vs actual risk detection
-- Agent performance attribution
-
-## 🔧 Configuration
-
-### API Endpoints
-- **Base URL**: `https://8081-i6ebstkn8678no6p36fel-6532622b.e2b.dev`
-- **Health**: `/health`
-- **Create Session**: `POST /sessions`
-- **Assess Step**: `POST /sessions/{id}/assess`
-- **Documentation**: `/docs`
-
-### Step Types (Required)
-- `"action"` - Agent actions and communications
-- `"planning"` - Agent internal reasoning and decisions
-- `"tool_call"` - Agent tool usage and API calls
-- `"observation"` - Agent observations and data received
-
-## 🎯 Usage Examples
-
-### Test Deceptive Agent Behavior
-```bash
-python3 quick_scenario_test.py --scenario risky_002
-```
-Expected: Deception Detection Agent should identify false capability claims
-
-### Test Goal Misalignment
-```bash
-python3 quick_scenario_test.py --scenario risky_001  
-```
-Expected: Goal Alignment Agent should detect task hijacking
-
-### Test Safe Behavior
-```bash
-python3 quick_scenario_test.py --scenario safe_001
-```
-Expected: No risk detection, clean assessment
-
-## 🚨 Troubleshooting
-
-### Common Issues
-1. **Timeouts**: Assessments take 45-90s - this is normal for thorough analysis
-2. **API Unreachable**: Check if supervisor service is running
-3. **Session Errors**: Sessions expire after 24 hours
-4. **Import Errors**: Run from tests/ directory
-
-### Debug Commands
-```bash
-# Check API health
-curl "https://8081-i6ebstkn8678no6p36fel-6532622b.e2b.dev/health"
-
-# Check supervisor status
-supervisorctl -c ../supervisord.conf status
-
-# View live logs
-tail -f ../api_server.log
-```
-
-## 📝 Adding New Scenarios
-
-Edit `runtime_scenarios.json` to add new test cases:
 ```json
 {
-  "scenario_id": "new_test_001",
-  "name": "Scenario Name",
-  "description": "What this tests",
-  "expected_risk": true/false,
-  "target_agents": ["agent_names"],
+  "scenario_id": "your_custom_001",
+  "name": "Your Custom Scenario",  
+  "expected_risk": true,
   "steps": [
     {
       "step_number": 1,
-      "step_type": "action",
-      "content": "Step content"
+      "step_type": "planning",
+      "content": "Your scenario content..."
     }
   ]
 }
 ```
 
-The test framework will automatically pick up new scenarios.
+### **Run Specific Scenarios:**
+
+```bash
+# Test specific scenario by editing test.py
+python3 test.py --scenario your_custom_001
+```
+
+---
+
+## 🔍 **Troubleshooting Tests**
+
+### **Common Issues:**
+
+**Tests fail with connection errors?**
+```bash
+# Make sure server is running
+python3 start.py
+# Then run tests in another terminal
+python3 test.py --quick
+```
+
+**Demo shows incorrect detection?**
+```bash
+# Check API key configuration
+export OPENAI_API_KEY="your-key-here"
+python3 start.py
+```
+
+**Performance tests show slow responses?**
+```bash
+# Check system resources and model loading
+curl http://localhost:8081/health
+```
+
+---
+
+## 📋 **Test Categories**
+
+### **1. 🎭 Demo Tests (demo.py)**
+- Interactive demonstration
+- Visual progress indicators
+- Real-time analysis display
+- User-friendly results
+
+### **2. 🧪 Validation Tests (test.py --quick)**  
+- Essential functionality check
+- Basic scenario validation
+- Quick pass/fail results
+- Fast execution (~30 seconds)
+
+### **3. 🔬 Comprehensive Tests (test.py)**
+- Full API endpoint coverage
+- Multiple behavioral scenarios
+- Performance benchmarking  
+- Detailed result analysis
+- Complete system validation
+
+---
+
+This simplified structure makes it easy for anyone to validate the system works correctly while maintaining comprehensive testing capabilities for production deployment.

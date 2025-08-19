@@ -7,7 +7,9 @@
 
 Detect goal misalignment, deception, privacy violations, and other behavioral risks in AI agent interactions using a multi-agent analysis system.
 
-**🚀 Quick Start**: Run `python run.py` to get started  
+**🚀 Quick Start**: Run `python3 start.py` to get started  
+**🎭 Demo**: Run `python3 demo.py` for interactive demonstration  
+**🧪 Test**: Run `python3 test.py` for validation  
 **📖 API Docs**: Available at `/docs` endpoint when server is running
 
 ## 🚀 Features
@@ -51,11 +53,20 @@ pip install -r requirements.txt
 # Set environment variables
 export OPENAI_API_KEY="your-api-key-here"
 
-# Start the API server
-python3 run.py
+# Start the server
+python3 start.py
 ```
 
-The server will be available at the URLs shown in the startup output.
+### Quick Demo
+```bash
+# Run interactive demo
+python3 demo.py
+
+# Run validation tests
+python3 test.py --quick
+```
+
+The server will be available at http://localhost:8081 with API docs at `/docs`.
 
 ## 📡 API Endpoints
 
@@ -106,13 +117,14 @@ The system uses configuration files in `configs/` directory:
 ## 🧪 Testing
 
 ```bash
-# Quick test scenarios
-cd tests
-python3 quick_scenario_test.py --list
-python3 quick_scenario_test.py --scenario risky_001
+# Quick validation
+python3 test.py --quick
 
-# Full test suite
-python3 runtime_test_runner.py
+# Comprehensive test suite
+python3 test.py
+
+# Interactive demonstration
+python3 demo.py
 ```
 
 ## 📊 Usage Examples
