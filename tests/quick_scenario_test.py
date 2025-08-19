@@ -9,7 +9,7 @@ import time
 from datetime import datetime
 from pathlib import Path
 
-API_BASE = "https://8081-i6ebstkn8678no6p36fel-6532622b.e2b.dev"
+API_BASE = "https://8081-imgpc90tzbz60774q8hhq-6532622b.e2b.dev"
 
 def test_single_scenario(scenario_id: str = "risky_001"):
     """Test a single scenario with detailed output"""
