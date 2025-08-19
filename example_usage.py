@@ -6,23 +6,51 @@ Example usage of the AnomalyAgent Behavioral Risk Detection API
 import requests
 import json
 import time
+import os
+import sys
+
+def get_api_base():
+    """Get the API base URL dynamically"""
+    # Try environment variable first
+    if "ANOMALY_AGENT_API_URL" in os.environ:
+        return os.environ["ANOMALY_AGENT_API_URL"]
+    
+    # Check for E2B sandbox environment
+    if "E2B_SANDBOX_ID" in os.environ:
+        sandbox_id = os.environ["E2B_SANDBOX_ID"]
+        return f"https://8081-{sandbox_id}.e2b.dev"
+    
+    # Allow user to specify URL as command line argument
+    if len(sys.argv) > 1:
+        return sys.argv[1]
+    
+    # Default to localhost
+    return "http://localhost:8081"
 
 # API Configuration
-API_BASE = "https://8081-i6ebstkn8678no6p36fel-6532622b.e2b.dev"
+API_BASE = get_api_base()
 
 def example_session_workflow():
     """Example of the complete session-based risk detection workflow"""
     
     print("🧪 AnomalyAgent API Usage Example")
     print("=" * 50)
+    print(f"🌐 Using API at: {API_BASE}")
+    print()
     
     # 1. Check API health
     print("1. Checking API health...")
-    health = requests.get(f"{API_BASE}/health")
-    if health.status_code == 200:
-        print(f"   ✅ API Status: {health.json()['status']}")
-    else:
-        print("   ❌ API not responding")
+    try:
+        health = requests.get(f"{API_BASE}/health", timeout=10)
+        if health.status_code == 200:
+            print(f"   ✅ API Status: {health.json()['status']}")
+        else:
+            print(f"   ❌ API returned status code: {health.status_code}")
+            return
+    except requests.exceptions.RequestException as e:
+        print(f"   ❌ Cannot connect to API: {e}")
+        print(f"   💡 Tip: Make sure the API server is running at {API_BASE}")
+        print(f"   💡 You can start it with: python run.py")
         return
     
     # 2. Create a session
@@ -137,10 +165,33 @@ def example_single_assessment():
         print(f"❌ Analysis failed: {response.status_code}")
 
 if __name__ == "__main__":
+    print("🧪 AnomalyAgent API Example Usage")
+    print("=" * 60)
+    
+    if len(sys.argv) > 1:
+        print(f"🌐 Using custom API URL: {API_BASE}")
+    else:
+        print(f"🌐 Using detected API URL: {API_BASE}")
+        print("💡 Tip: You can override with: python example_usage.py http://your-api-url")
+    
+    print("\n📋 This example will demonstrate:")
+    print("   1. Session-based behavioral risk detection")  
+    print("   2. Single trajectory analysis")
+    print("   3. Incremental memory and context building")
+    print()
+    
     try:
         example_session_workflow()
+        print("\n" + "="*60 + "\n")
         example_single_assessment()
+        
+        print("\n🎉 Examples completed successfully!")
+        print(f"📖 For more details, visit: {API_BASE}/docs")
+        
     except requests.exceptions.RequestException as e:
         print(f"❌ Network error: {e}")
+        print("💡 Make sure the API server is running and accessible")
+    except KeyboardInterrupt:
+        print("\n🛑 Examples interrupted by user")
     except Exception as e:
-        print(f"❌ Error: {e}")
+        print(f"❌ Unexpected error: {e}")

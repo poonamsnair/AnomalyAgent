@@ -1,14 +1,14 @@
 # AnomalyAgent - Behavioral Risk Detection API
 
-[![API Status](https://img.shields.io/badge/Status-Live-brightgreen)](https://8081-i6ebstkn8678no6p36fel-6532622b.e2b.dev/health)
-[![API Health](https://img.shields.io/badge/API-Healthy-green)](https://8081-i6ebstkn8678no6p36fel-6532622b.e2b.dev/health)
+[![Python](https://img.shields.io/badge/Python-3.8+-brightgreen)](https://python.org)
+[![FastAPI](https://img.shields.io/badge/FastAPI-Latest-green)](https://fastapi.tiangolo.com)
 
 🤖 **AI-powered behavioral risk detection for agent trajectories**
 
 Detect goal misalignment, deception, privacy violations, and other behavioral risks in AI agent interactions using a multi-agent analysis system.
 
-**🌐 Live API**: https://8081-i6ebstkn8678no6p36fel-6532622b.e2b.dev  
-**📖 API Docs**: https://8081-i6ebstkn8678no6p36fel-6532622b.e2b.dev/docs
+**🚀 Quick Start**: Run `python run.py` to get started  
+**📖 API Docs**: Available at `/docs` endpoint when server is running
 
 ## 🚀 Features
 

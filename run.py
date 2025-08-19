@@ -8,6 +8,22 @@ import sys
 import time
 from pathlib import Path
 
+def get_api_url():
+    """Get the API URL dynamically or use localhost"""
+    try:
+        # Try to get the public URL from environment or service
+        import os
+        
+        # Check for E2B or cloud environment variables
+        if "E2B_SANDBOX_ID" in os.environ:
+            sandbox_id = os.environ["E2B_SANDBOX_ID"] 
+            return f"https://8081-{sandbox_id}.e2b.dev"
+        
+        # Default to localhost for local development
+        return "http://localhost:8081"
+    except:
+        return "http://localhost:8081"
+
 def main():
     """Main entry point for running AnomalyAgent"""
     
@@ -19,6 +35,9 @@ def main():
         print("❌ Error: api_server.py not found. Run this script from the AnomalyAgent root directory.")
         sys.exit(1)
     
+    # Get the API URL
+    api_url = get_api_url()
+    
     print("📋 Options:")
     print("1. Start API server (supervisor daemon)")
     print("2. Start API server (direct)")  
@@ -26,22 +45,25 @@ def main():
     print("4. Check status")
     print("5. View logs")
     print("6. Run tests")
+    print("7. Show URLs")
     
-    choice = input("\n🎯 Select option (1-6): ").strip()
+    choice = input("\n🎯 Select option (1-7): ").strip()
     
     if choice == "1":
         print("🔄 Starting API server with supervisor...")
         result = subprocess.run(["supervisord", "-c", "supervisord.conf"], capture_output=True, text=True)
         if result.returncode == 0:
             print("✅ API server started successfully!")
-            print("🌐 API URL: https://8081-i6ebstkn8678no6p36fel-6532622b.e2b.dev")
-            print("📖 Documentation: https://8081-i6ebstkn8678no6p36fel-6532622b.e2b.dev/docs")
+            print(f"🌐 API URL: {api_url}")
+            print(f"📖 Documentation: {api_url}/docs")
+            print(f"🧪 Interactive API: {api_url}/redoc")
         else:
             print(f"❌ Failed to start: {result.stderr}")
     
     elif choice == "2":
         print("🔄 Starting API server directly...")
         print("⚠️  Press Ctrl+C to stop")
+        print(f"🌐 API will be available at: {api_url}")
         try:
             subprocess.run([sys.executable, "api_server.py"])
         except KeyboardInterrupt:
@@ -59,13 +81,14 @@ def main():
         # Also check API health
         try:
             import requests
-            health = requests.get("https://8081-i6ebstkn8678no6p36fel-6532622b.e2b.dev/health", timeout=5)
+            health = requests.get(f"{api_url}/health", timeout=5)
             if health.status_code == 200:
                 print("✅ API is responding and healthy")
+                print(f"🌐 Available at: {api_url}")
             else:
                 print("⚠️ API returned error code:", health.status_code)
-        except:
-            print("❌ API is not responding")
+        except Exception as e:
+            print(f"❌ API is not responding: {e}")
     
     elif choice == "5":
         print("📋 Recent logs:")
@@ -74,6 +97,13 @@ def main():
     elif choice == "6":
         print("🧪 Running tests...")
         subprocess.run([sys.executable, "-m", "pytest", "tests/", "-v"])
+    
+    elif choice == "7":
+        print("🔗 API URLs:")
+        print(f"   🌐 Main API: {api_url}")
+        print(f"   📖 Documentation: {api_url}/docs")
+        print(f"   🧪 Interactive API: {api_url}/redoc")
+        print(f"   💓 Health Check: {api_url}/health")
         
     else:
         print("❌ Invalid option selected")
