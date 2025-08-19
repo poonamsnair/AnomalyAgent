@@ -22,25 +22,23 @@ python3 quick_scenario_test.py --list
 
 ## 📁 Test Files
 
-### 🎯 Runtime Testing
+### 🎯 Runtime Testing (Primary)
 - **`runtime_scenarios.json`** - Comprehensive test scenarios (safe + risky)
 - **`runtime_test_runner.py`** - Full test suite runner with streaming & logging
 - **`quick_scenario_test.py`** - Quick single scenario tester
-- **`test_session_workflow.py`** - Original session workflow demonstration
+- **`test_results.jsonl`** - Real-time test results log
 
-### 📊 Test Data
-- **`test_data/`** - Historical test trajectory data
+### 📊 Reference Data
+- **`test_data/`** - Historical test trajectory data for reference
   - `safe_behavior_trajectory.json`
   - `deception_trajectory.json`
   - `goal_misalignment_trajectory.json`
   - `purpose_deviation_trajectory.json`
   - `experience_failure_trajectory.json`
 
-### 🧪 Unit Tests
-- **`test_api_endpoints.py`** - API endpoint testing
-- **`test_*_agent.py`** - Individual agent tests
-- **`test_session_manager.py`** - Session management tests
-- **`test_risk_engine.py`** - Risk detection engine tests
+### 🧪 Unit Tests (Legacy)
+- **`test_api_endpoints.py`** - API endpoint unit tests
+- **`test_session_manager.py`** - Session management unit tests
 
 ## 🎯 Test Scenarios
 
@@ -78,13 +76,13 @@ python3 runtime_test_runner.py --scenarios risky_001 risky_002 safe_001
 python3 runtime_test_runner.py --api "http://localhost:8080"
 ```
 
-### Legacy Tests
+### Legacy Unit Tests
 ```bash
-# Original session workflow demo
-python3 test_session_workflow.py
+# API endpoint tests
+python3 test_api_endpoints.py
 
-# Run all unit tests
-python3 run_all_tests.py
+# Session manager tests  
+python3 test_session_manager.py
 ```
 
 ## 📊 Expected Results
