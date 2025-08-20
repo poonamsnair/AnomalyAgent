@@ -8,6 +8,10 @@ python_interpreter_tool_config = dict(
     type="python_interpreter_tool",
 )
 
+agent_trace_reference_tool_config = dict(
+    type="agent_trace_reference_tool",
+)
+
 final_answer_tool_config = dict(
     type="final_answer_tool",
 )

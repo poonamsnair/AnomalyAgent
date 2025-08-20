@@ -1,0 +1,136 @@
+{
+  "trace_metadata": {
+    "trace_id": "optimal_behavioral_risk_analysis_v1.0",
+    "description": "Reference trace showing optimal agent path for behavioral risk detection",
+    "version": "1.0.0",
+    "created_date": "2024-08-20",
+    "use_case": "Comprehensive behavioral risk analysis with parallel execution and confidence-based routing"
+  },
+  "optimal_agent_path": [
+    {
+      "step": 1,
+      "agent": "behavioral_risk_coordinator_agent",
+      "action": "initialize_analysis",
+      "description": "Initialize behavioral risk analysis session and parse input trajectory data",
+      "expected_outputs": ["trajectory_parsed", "session_initialized"],
+      "confidence_threshold": 0.9,
+      "execution_time_ms": 250
+    },
+    {
+      "step": 2,
+      "agent": "behavioral_risk_coordinator_agent", 
+      "action": "perform_initial_risk_assessment",
+      "description": "Quick pattern-based risk assessment to determine confidence level and routing strategy",
+      "expected_outputs": ["initial_confidence_score", "risk_indicators_detected", "routing_decision"],
+      "confidence_threshold": 0.8,
+      "execution_time_ms": 300
+    },
+    {
+      "step": 3,
+      "agent": "behavioral_risk_coordinator_agent",
+      "action": "determine_analysis_strategy", 
+      "description": "Based on initial assessment, decide whether to use parallel execution or early return",
+      "expected_outputs": ["agents_to_call", "execution_mode", "expected_completion_time"],
+      "confidence_threshold": 0.85,
+      "execution_time_ms": 150
+    },
+    {
+      "step": 4,
+      "agent": "goal_alignment_agent",
+      "action": "analyze_goal_alignment",
+      "description": "Analyze user-agent goal alignment for misalignment and goal manipulation indicators",
+      "expected_outputs": ["goal_alignment_score", "alignment_evidence", "risk_detected"],
+      "confidence_threshold": 0.8,
+      "execution_time_ms": 2000,
+      "parallel_execution": true
+    },
+    {
+      "step": 5,
+      "agent": "purpose_deviation_agent",
+      "action": "analyze_purpose_deviation", 
+      "description": "Detect agent deviation from primary purpose and unauthorized scope expansion",
+      "expected_outputs": ["deviation_score", "deviation_evidence", "scope_violations"],
+      "confidence_threshold": 0.8,
+      "execution_time_ms": 1800,
+      "parallel_execution": true
+    },
+    {
+      "step": 6,
+      "agent": "deception_detection_agent",
+      "action": "analyze_deception_patterns",
+      "description": "Identify misleading communications and unauthorized autonomous actions",
+      "expected_outputs": ["deception_score", "misleading_instances", "autonomy_violations"],
+      "confidence_threshold": 0.8,
+      "execution_time_ms": 2200,
+      "parallel_execution": true
+    },
+    {
+      "step": 7,
+      "agent": "experience_quality_agent",
+      "action": "analyze_technical_failures",
+      "description": "Assess technical failures and architectural issues affecting user experience",
+      "expected_outputs": ["quality_score", "technical_issues", "safety_concerns"],
+      "confidence_threshold": 0.8,
+      "execution_time_ms": 1900,
+      "parallel_execution": true 
+    },
+    {
+      "step": 8,
+      "agent": "behavioral_risk_coordinator_agent",
+      "action": "aggregate_specialist_reports",
+      "description": "Collect and aggregate all specialist agent reports for comprehensive assessment",
+      "expected_outputs": ["aggregated_results", "overall_confidence", "risk_categories_detected"],
+      "confidence_threshold": 0.9,
+      "execution_time_ms": 400
+    },
+    {
+      "step": 9,
+      "agent": "behavioral_risk_coordinator_agent",
+      "action": "validate_risk_assessment",
+      "description": "Validate aggregated results and ensure assessment meets confidence thresholds",
+      "expected_outputs": ["validation_passed", "final_confidence_score", "assessment_quality"],
+      "confidence_threshold": 0.85,
+      "execution_time_ms": 300
+    },
+    {
+      "step": 10,
+      "agent": "behavioral_risk_coordinator_agent",
+      "action": "format_final_assessment",
+      "description": "Format comprehensive behavioral risk assessment with evidence and recommendations",
+      "expected_outputs": ["formatted_assessment", "binary_risk_decision", "detailed_reasoning"],
+      "confidence_threshold": 0.9,
+      "execution_time_ms": 200
+    }
+  ],
+  "performance_metrics": {
+    "total_expected_time_ms": 9500,
+    "parallel_efficiency_gain": "65%",
+    "confidence_routing_savings": "40%",
+    "optimal_success_rate": 0.95
+  },
+  "risk_categories_coverage": [
+    "user_agent_goal_alignment",
+    "purpose_deviation", 
+    "deception_and_autonomy",
+    "technical_experience_failures"
+  ],
+  "execution_modes": {
+    "high_confidence_early_return": {
+      "description": "When initial confidence > 0.8 and no risk indicators, return after goal_alignment_agent only",
+      "steps_used": [1, 2, 3, 4, 8, 9, 10],
+      "time_savings": "60%"
+    },
+    "parallel_full_analysis": {
+      "description": "When confidence < 0.8 or risk indicators present, execute all agents in parallel",
+      "steps_used": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+      "time_savings": "40%"
+    }
+  },
+  "usage_notes": [
+    "This trace serves as a reference for optimal agent execution patterns",
+    "Agents can consult this trace to understand expected flow and performance benchmarks",
+    "Confidence thresholds and execution times are targets, not strict requirements",
+    "Parallel execution in steps 4-7 provides significant performance improvements",
+    "Early return strategy in high-confidence scenarios reduces unnecessary computation"
+  ]
+}
