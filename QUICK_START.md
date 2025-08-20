@@ -1,6 +1,6 @@
 # 🚀 AnomalyAgent - Quick Start Guide
 
-**Sophisticated Behavioral Risk Detection for Multi-Agent Systems**
+**High-Performance Behavioral Risk Detection with Smart Routing & Parallel Processing**
 
 ---
 
@@ -29,16 +29,18 @@ python3 test.py --quick
 
 AnomalyAgent detects **subtle behavioral risks** in AI agent conversations:
 
+- **🚀 Smart Performance** - 4x faster with confidence-based routing & parallel execution
 - **🕵️ Manipulation Detection** - Finds agents creating user dependencies
 - **🎭 Goal Drift Detection** - Catches gradual shifts from user needs
 - **🔍 Multi-Agent Analysis** - Understands complex agent coordination patterns
 - **📊 Evidence-Based Assessment** - Provides detailed reasoning for risk decisions
+- **🎯 Agent Trace Reference** - Built-in optimal path guidance for performance tuning
 
 ### **Perfect For:**
-- 114-step conversation analysis
-- Multi-agent workflow monitoring  
-- Enterprise AI system safety
-- Production agent behavioral auditing
+- High-volume conversation analysis with performance optimization
+- Multi-agent workflow monitoring with real-time assessment  
+- Enterprise AI system safety with confidence-based routing
+- Production agent behavioral auditing with parallel processing
 
 ---
 

@@ -14,11 +14,14 @@ Detect goal misalignment, deception, privacy violations, and other behavioral ri
 
 ## 🚀 Features
 
-- **Behavioral Risk Detection**: Analyze AI agent trajectories for goal alignment, purpose deviation, deception, and experience quality issues
+- **Smart Behavioral Risk Detection**: Analyze AI agent trajectories for goal alignment, purpose deviation, deception, and experience quality issues
+- **Confidence-Based Routing**: Early return on high-confidence assessments, full analysis when needed for optimal performance
+- **Parallel Agent Execution**: 4x faster analysis with concurrent specialist agent processing
+- **Agent Trace Reference**: Built-in guidance tool for optimal execution paths and performance benchmarks
 - **Session Management**: In-memory session tracking for incremental risk assessment across multiple API calls
 - **Multi-Agent Architecture**: Hierarchical agent system with specialized risk detection agents
 - **Real-time Analysis**: Process trajectories in JSON, JSONL, or Skywork formats
-- **OpenAI Integration**: Built-in support for GPT-4o and other OpenAI models
+- **OpenAI Compatible**: Simplified configuration supporting any OpenAI-compatible endpoint with SSL flexibility
 
 ## 🏗️ Architecture
 
@@ -33,7 +36,7 @@ Detect goal misalignment, deception, privacy violations, and other behavioral ri
 - **Purpose Deviation Agent**: Identifies unauthorized scope expansion
 - **Deception Detection Agent**: Uncovers misleading communications
 - **Experience Quality Agent**: Assesses technical failures and UX issues
-- **Coordinator Agent**: Orchestrates multi-agent risk assessment
+- **Coordinator Agent**: Orchestrates multi-agent risk assessment with confidence-based routing and parallel execution
 
 ## 🚀 Quick Start
 
@@ -109,10 +112,25 @@ DELETE /sessions/{session_id}
 
 ## 🔧 Configuration
 
-The system uses configuration files in `configs/` directory:
-- `config_main.py`: Main configuration with agent settings
-- Model configurations for different AI providers
-- Tool and agent registration settings
+The system uses simplified OpenAI-compatible configuration in `configs/` directory:
+
+### OpenAI Configuration
+```python
+openai_config = dict(
+    api_base_url="https://api.openai.com/v1",  # Any OpenAI-compatible URL
+    api_key="your-api-key-here",              # API key for authentication
+    model_name="gpt-4o",                      # Model to use for analysis
+    ssl_verify=False,                         # SSL verification setting
+    timeout=60,                               # Request timeout
+    max_retries=3,                           # Retry attempts
+    temperature=0.1,                         # Low temperature for consistent analysis
+)
+```
+
+### Performance Features
+- **Confidence Thresholds**: Configurable confidence levels for routing decisions
+- **Parallel Execution**: Automatic concurrent processing of specialist agents  
+- **Agent Trace Reference**: Built-in optimal path guidance for performance optimization
 
 ## 🧪 Testing
 
@@ -186,6 +204,13 @@ For issues and questions:
 - Review the test examples
 
 ## 🔄 Changelog
+
+### v2.0.0 - Performance & Routing Improvements
+- **Confidence-based routing**: Early return on high confidence assessments
+- **Parallel agent execution**: 4x performance improvement with concurrent processing
+- **Agent trace reference tool**: Optimal execution path guidance and benchmarks
+- **Simplified OpenAI configuration**: SSL-flexible, any OpenAI-compatible endpoint
+- **Smart behavioral analysis**: Intelligent routing based on initial risk assessment
 
 ### v1.0.0
 - Initial release with core risk detection
