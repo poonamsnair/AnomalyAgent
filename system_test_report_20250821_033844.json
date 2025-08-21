@@ -1,0 +1,374 @@
+{
+  "test_summary": {
+    "timestamp": "2025-08-21T03:38:44.867424",
+    "total_tests": 17,
+    "passed_tests": 13,
+    "failed_tests": 4,
+    "success_rate": "76.5%",
+    "average_latency_ms": "6132.19"
+  },
+  "agent_tests": {
+    "total": 4,
+    "passed": 4,
+    "details": [
+      {
+        "name": "goal_alignment_agent_availability",
+        "success": true,
+        "latency_ms": 4180.23157119751
+      },
+      {
+        "name": "purpose_deviation_agent_availability",
+        "success": true,
+        "latency_ms": 0.6198883056640625
+      },
+      {
+        "name": "deception_detection_agent_availability",
+        "success": true,
+        "latency_ms": 0.47779083251953125
+      },
+      {
+        "name": "experience_quality_agent_availability",
+        "success": true,
+        "latency_ms": 0.5006790161132812
+      }
+    ]
+  },
+  "tool_tests": {
+    "total": 4,
+    "passed": 4,
+    "details": [
+      {
+        "name": "trajectory_parser_tool",
+        "success": true,
+        "latency_ms": 1.2156963348388672
+      },
+      {
+        "name": "python_interpreter_tool",
+        "success": true,
+        "latency_ms": 0.9815692901611328
+      },
+      {
+        "name": "agent_trace_reference_tool",
+        "success": true,
+        "latency_ms": 1.5833377838134766
+      },
+      {
+        "name": "final_answer_tool",
+        "success": true,
+        "latency_ms": 0.5021095275878906
+      }
+    ]
+  },
+  "api_tests": {
+    "total": 4,
+    "passed": 0,
+    "details": [
+      {
+        "name": "health_endpoint",
+        "success": false,
+        "latency_ms": 10010.260820388794
+      },
+      {
+        "name": "analyze_benign",
+        "success": false,
+        "latency_ms": 30032.15742111206
+      },
+      {
+        "name": "analyze_risky",
+        "success": false,
+        "latency_ms": 30008.599758148193
+      },
+      {
+        "name": "analyze_complex",
+        "success": false,
+        "latency_ms": 30006.791591644287
+      }
+    ]
+  },
+  "trace_step_tests": {
+    "total": 4,
+    "passed": 4,
+    "details": [
+      {
+        "name": "trace_step_initialization",
+        "success": true,
+        "latency_ms": 1.0912418365478516
+      },
+      {
+        "name": "trace_step_risk_assessment",
+        "success": true,
+        "latency_ms": 0.5850791931152344
+      },
+      {
+        "name": "trace_step_parallel_execution",
+        "success": true,
+        "latency_ms": 0.5342960357666016
+      },
+      {
+        "name": "trace_step_final_analysis",
+        "success": true,
+        "latency_ms": 0.6399154663085938
+      }
+    ]
+  },
+  "detailed_results": [
+    {
+      "test_name": "goal_alignment_agent_availability",
+      "success": true,
+      "latency_ms": 4180.23157119751,
+      "reasoning": "Successfully imported and inspected goal_alignment_agent",
+      "trace_steps": [
+        {
+          "step": 1,
+          "action": "import_agent",
+          "agent": "goal_alignment_agent",
+          "result": "success",
+          "methods_count": 21
+        }
+      ],
+      "response_summary": "Agent loaded with 21 methods",
+      "error": null
+    },
+    {
+      "test_name": "purpose_deviation_agent_availability",
+      "success": true,
+      "latency_ms": 0.6198883056640625,
+      "reasoning": "Successfully imported and inspected purpose_deviation_agent",
+      "trace_steps": [
+        {
+          "step": 1,
+          "action": "import_agent",
+          "agent": "purpose_deviation_agent",
+          "result": "success",
+          "methods_count": 21
+        }
+      ],
+      "response_summary": "Agent loaded with 21 methods",
+      "error": null
+    },
+    {
+      "test_name": "deception_detection_agent_availability",
+      "success": true,
+      "latency_ms": 0.47779083251953125,
+      "reasoning": "Successfully imported and inspected deception_detection_agent",
+      "trace_steps": [
+        {
+          "step": 1,
+          "action": "import_agent",
+          "agent": "deception_detection_agent",
+          "result": "success",
+          "methods_count": 21
+        }
+      ],
+      "response_summary": "Agent loaded with 21 methods",
+      "error": null
+    },
+    {
+      "test_name": "experience_quality_agent_availability",
+      "success": true,
+      "latency_ms": 0.5006790161132812,
+      "reasoning": "Successfully imported and inspected experience_quality_agent",
+      "trace_steps": [
+        {
+          "step": 1,
+          "action": "import_agent",
+          "agent": "experience_quality_agent",
+          "result": "success",
+          "methods_count": 21
+        }
+      ],
+      "response_summary": "Agent loaded with 21 methods",
+      "error": null
+    },
+    {
+      "test_name": "trajectory_parser_tool",
+      "success": true,
+      "latency_ms": 1.2156963348388672,
+      "reasoning": "Successfully parsed JSON trajectory data",
+      "trace_steps": [
+        {
+          "step": 1,
+          "action": "parse_trajectory",
+          "format": "json",
+          "result": "success",
+          "output_length": 48
+        }
+      ],
+      "response_summary": "Error: Trajectory must contain at least one step",
+      "error": null
+    },
+    {
+      "test_name": "python_interpreter_tool",
+      "success": true,
+      "latency_ms": 0.9815692901611328,
+      "reasoning": "Successfully executed Python code",
+      "trace_steps": [
+        {
+          "step": 1,
+          "action": "execute_python",
+          "code_length": 79,
+          "result": "success"
+        }
+      ],
+      "response_summary": "Stdout:\nTesting Python interpreter\n2 + 2 = 4\n\nOutput: None",
+      "error": null
+    },
+    {
+      "test_name": "agent_trace_reference_tool",
+      "success": true,
+      "latency_ms": 1.5833377838134766,
+      "reasoning": "Successfully queried optimal path with confidence level",
+      "trace_steps": [
+        {
+          "step": 1,
+          "action": "query_optimal_path",
+          "confidence_level": 0.7,
+          "result": "success"
+        }
+      ],
+      "response_summary": "None",
+      "error": null
+    },
+    {
+      "test_name": "final_answer_tool",
+      "success": true,
+      "latency_ms": 0.5021095275878906,
+      "reasoning": "Successfully formatted final answer",
+      "trace_steps": [
+        {
+          "step": 1,
+          "action": "format_final_answer",
+          "answer_length": 63,
+          "result": "success"
+        }
+      ],
+      "response_summary": "Test behavioral risk analysis complete. No significant risks detected.",
+      "error": null
+    },
+    {
+      "test_name": "health_endpoint",
+      "success": false,
+      "latency_ms": 10010.260820388794,
+      "reasoning": "Could not connect to API server",
+      "trace_steps": [],
+      "response_summary": "None",
+      "error": "HTTPConnectionPool(host='localhost', port=8081): Read timed out. (read timeout=10)"
+    },
+    {
+      "test_name": "analyze_benign",
+      "success": false,
+      "latency_ms": 30032.15742111206,
+      "reasoning": "Analysis failed: HTTPConnectionPool(host='localhost', port=8081): Read timed out. (read timeout=30)",
+      "trace_steps": [],
+      "response_summary": "None",
+      "error": "HTTPConnectionPool(host='localhost', port=8081): Read timed out. (read timeout=30)"
+    },
+    {
+      "test_name": "analyze_risky",
+      "success": false,
+      "latency_ms": 30008.599758148193,
+      "reasoning": "Analysis failed: HTTPConnectionPool(host='localhost', port=8081): Read timed out. (read timeout=30)",
+      "trace_steps": [],
+      "response_summary": "None",
+      "error": "HTTPConnectionPool(host='localhost', port=8081): Read timed out. (read timeout=30)"
+    },
+    {
+      "test_name": "analyze_complex",
+      "success": false,
+      "latency_ms": 30006.791591644287,
+      "reasoning": "Analysis failed: HTTPConnectionPool(host='localhost', port=8081): Read timed out. (read timeout=30)",
+      "trace_steps": [],
+      "response_summary": "None",
+      "error": "HTTPConnectionPool(host='localhost', port=8081): Read timed out. (read timeout=30)"
+    },
+    {
+      "test_name": "trace_step_initialization",
+      "success": true,
+      "latency_ms": 1.0912418365478516,
+      "reasoning": "Successfully processed initialization trace step",
+      "trace_steps": [
+        {
+          "step": 1,
+          "action": "initialize_analysis",
+          "step_type": "initialization",
+          "processing_time_ms": 1.0912418365478516
+        }
+      ],
+      "response_summary": "None",
+      "error": null
+    },
+    {
+      "test_name": "trace_step_risk_assessment",
+      "success": true,
+      "latency_ms": 0.5850791931152344,
+      "reasoning": "Successfully processed risk_assessment trace step",
+      "trace_steps": [
+        {
+          "step": 1,
+          "action": "assess_behavioral_risk",
+          "step_type": "risk_assessment",
+          "processing_time_ms": 0.5850791931152344
+        }
+      ],
+      "response_summary": "None",
+      "error": null
+    },
+    {
+      "test_name": "trace_step_parallel_execution",
+      "success": true,
+      "latency_ms": 0.5342960357666016,
+      "reasoning": "Successfully processed parallel_execution trace step",
+      "trace_steps": [
+        {
+          "step": 1,
+          "action": "execute_parallel_agents",
+          "step_type": "parallel_execution",
+          "processing_time_ms": 0.5342960357666016
+        }
+      ],
+      "response_summary": "None",
+      "error": null
+    },
+    {
+      "test_name": "trace_step_final_analysis",
+      "success": true,
+      "latency_ms": 0.6399154663085938,
+      "reasoning": "Successfully processed final_analysis trace step",
+      "trace_steps": [
+        {
+          "step": 1,
+          "action": "generate_final_report",
+          "step_type": "final_analysis",
+          "processing_time_ms": 0.6399154663085938
+        }
+      ],
+      "response_summary": "None",
+      "error": null
+    },
+    {
+      "test_name": "overall_latency",
+      "success": true,
+      "latency_ms": 0.5147457122802734,
+      "reasoning": "System latency meets low-latency requirements",
+      "trace_steps": [
+        {
+          "step": 1,
+          "operation": "model_config_load",
+          "latency_ms": 0.10776519775390625
+        },
+        {
+          "step": 2,
+          "operation": "tool_initialization",
+          "latency_ms": 0.10776519775390625
+        },
+        {
+          "step": 3,
+          "operation": "trace_query",
+          "latency_ms": 0.10776519775390625
+        }
+      ],
+      "response_summary": "{'average_latency_ms': 0.5147457122802734, 'individual_latencies': [0.6256103515625, 0.8108615875244141, 0.10776519775390625]}",
+      "error": null
+    }
+  ]
+}
