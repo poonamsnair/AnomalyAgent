@@ -41,16 +41,29 @@ from src.agent import create_agent
 
 # Import agents and tools to ensure they are registered
 try:
+    # Import individual agents first to register them
     from src.agent.goal_alignment_agent.goal_alignment_agent import GoalAlignmentAgent
     from src.agent.purpose_deviation_agent.purpose_deviation_agent import PurposeDeviationAgent
     from src.agent.deception_detection_agent.deception_detection_agent import DeceptionDetectionAgent
     from src.agent.experience_quality_agent.experience_quality_agent import ExperienceQualityAgent
+    
+    # Import coordinator agent
     from src.agent.behavioral_risk_coordinator_agent.behavioral_risk_coordinator_agent import BehavioralRiskCoordinatorAgent
     
-    # Import the agent trace reference tool to register it
+    # Import tools to register them
     from src.tools.agent_trace_reference_tool import AgentTraceReferenceTool
+    from src.tools.trajectory_parser import TrajectoryParserTool
+    from src.tools.python_interpreter import PythonInterpreterTool
     
     logger.info("Successfully imported all behavioral risk agents and tools")
+    
+    # Verify registrations
+    from src.registry import AGENT, TOOL
+    agent_names = list(AGENT._modules.keys())
+    tool_names = list(TOOL._modules.keys())
+    logger.info(f"Registered agents: {agent_names}")
+    logger.info(f"Registered tools: {tool_names}")
+    
 except ImportError as e:
     logger.warning(f"Failed to import some agents: {e}")
 from src.session import SessionManager

@@ -59,6 +59,14 @@ configs/*.key
 configs/*.secret
 *.pem
 *.key
+**/openai_api_key.txt
+**/api_key.txt
+supervisord.conf.backup
+.env.backup
+
+# Prevent any files containing API keys
+**/sk-*
+**/openai_*key*
 
 # Database
 *.db

@@ -16,6 +16,42 @@ from src.tools.tools import AsyncTool, ToolResult
 from src.registry import TOOL
 from src.logger import logger
 
+# Tool parameters schema for OpenAI-compatible function calling
+TOOL_PARAMETERS = {
+    "type": "object",
+    "properties": {
+        "query_type": {
+            "type": "string",
+            "enum": ["optimal_path", "performance", "strategy", "step_guidance", "agent_guidance"],
+            "description": "Type of trace reference query to perform",
+            "nullable": True
+        },
+        "agent_name": {
+            "type": "string",
+            "description": "Name of specific agent (for agent_guidance query)",
+            "nullable": True
+        },
+        "step_number": {
+            "type": "integer", 
+            "description": "Specific step number (for step_guidance query)",
+            "nullable": True
+        },
+        "confidence_level": {
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": 1.0,
+            "description": "Current confidence level (for strategy query)",
+            "nullable": True
+        },
+        "risk_indicators": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Number of risk indicators detected (for strategy query)",
+            "nullable": True
+        }
+    },
+    "required": []
+}
 
 @TOOL.register_module(name="agent_trace_reference_tool", force=True)
 class AgentTraceReferenceTool(AsyncTool):
@@ -29,10 +65,14 @@ class AgentTraceReferenceTool(AsyncTool):
     - Execution strategy recommendations based on confidence levels
     """
     
+    # Required class attributes
+    name = "agent_trace_reference_tool"
+    description = "Reference tool for optimal agent execution paths and performance benchmarks in behavioral risk analysis"
+    output_type = "string"
+    parameters = TOOL_PARAMETERS
+    
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.name = "agent_trace_reference_tool"
-        self.description = "Reference tool for optimal agent execution paths and performance benchmarks in behavioral risk analysis"
         
         # Load the trace reference data
         self.trace_file_path = Path(__file__).parent / "agent_trace_reference.json"
@@ -137,14 +177,14 @@ class AgentTraceReferenceTool(AsyncTool):
                 
         return agent_steps
     
-    async def __call__(self, 
-                       query_type: str = "optimal_path",
-                       agent_name: Optional[str] = None,
-                       step_number: Optional[int] = None,
-                       confidence_level: Optional[float] = None,
-                       risk_indicators: Optional[int] = None) -> ToolResult:
+    async def forward(self, 
+                      query_type: str = "optimal_path",
+                      agent_name: Optional[str] = None,
+                      step_number: Optional[int] = None,
+                      confidence_level: Optional[float] = None,
+                      risk_indicators: Optional[int] = None) -> ToolResult:
         """
-        Main tool interface for querying trace reference information.
+        Forward method for querying trace reference information.
         
         Args:
             query_type: Type of query ("optimal_path", "performance", "strategy", "step_guidance", "agent_guidance")
@@ -191,39 +231,6 @@ class AgentTraceReferenceTool(AsyncTool):
         except Exception as e:
             logger.error(f"Error in agent_trace_reference_tool: {e}")
             return ToolResult(content=json.dumps({"error": str(e)}), error=str(e))
-
-
-# Tool parameters schema for OpenAI-compatible function calling
-TOOL_PARAMETERS = {
-    "type": "object",
-    "properties": {
-        "query_type": {
-            "type": "string",
-            "enum": ["optimal_path", "performance", "strategy", "step_guidance", "agent_guidance"],
-            "description": "Type of trace reference query to perform"
-        },
-        "agent_name": {
-            "type": "string",
-            "description": "Name of specific agent (for agent_guidance query)"
-        },
-        "step_number": {
-            "type": "integer",
-            "description": "Specific step number (for step_guidance query)"
-        },
-        "confidence_level": {
-            "type": "number",
-            "minimum": 0.0,
-            "maximum": 1.0,
-            "description": "Current confidence level (for strategy query)"
-        },
-        "risk_indicators": {
-            "type": "integer",
-            "minimum": 0,
-            "description": "Number of risk indicators detected (for strategy query)"
-        }
-    },
-    "required": ["query_type"]
-}
 
 
 if __name__ == "__main__":
