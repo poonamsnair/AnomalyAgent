@@ -39,18 +39,28 @@ class ModelManager(metaclass=Singleton):
         return api_base
     
     def _register_openai_models_simple(self, use_local_proxy: bool = False):
-        """Register essential OpenAI models without litellm"""
-        logger.info("Registering simplified OpenAI models (no litellm)")
+        """Register essential OpenAI models using unified config"""
+        logger.info("Registering OpenAI models with unified configuration")
         
-        api_key = self._check_local_api_key(local_api_key_name="SKYWORK_API_KEY",
-                                            remote_api_key_name="OPENAI_API_KEY")
-        
-        if api_key == PLACEHOLDER:
-            logger.warning("No OpenAI API key found, skipping OpenAI model registration")
-            return
+        # Import the unified OpenAI config
+        try:
+            from configs.config_main import openai_config
             
-        api_base = self._check_local_api_base(local_api_base_name="SKYWORK_AZURE_US_API_BASE",
-                                            remote_api_base_name="OPENAI_API_BASE")
+            # Use environment variable if available, otherwise use config default
+            api_key = os.getenv("OPENAI_API_KEY", openai_config.get("api_key", ""))
+            api_base = os.getenv("OPENAI_API_BASE", openai_config.get("api_base_url", "https://api.openai.com/v1"))
+            
+            if not api_key or api_key == PLACEHOLDER:
+                logger.warning("No OpenAI API key found - set OPENAI_API_KEY environment variable")
+                return
+                
+            logger.info(f"Using API base: {api_base}")
+        except ImportError:
+            # Fallback to original method if config not available
+            api_key = self._check_local_api_key(local_api_key_name="SKYWORK_API_KEY",
+                                                remote_api_key_name="OPENAI_API_KEY")
+            api_base = self._check_local_api_base(local_api_base_name="SKYWORK_AZURE_US_API_BASE",
+                                                remote_api_base_name="OPENAI_API_BASE")
         
         # Only register essential models
         models_to_register = ["gpt-4o", "gpt-4", "gpt-3.5-turbo"]
@@ -69,16 +79,26 @@ class ModelManager(metaclass=Singleton):
                 logger.warning(f"Failed to register OpenAI model {model_name}: {str(e)}")
     
     def _register_langchain_models_simple(self, use_local_proxy: bool = False):
-        """Register essential LangChain models"""
-        api_key = self._check_local_api_key(local_api_key_name="SKYWORK_API_KEY",
-                                            remote_api_key_name="OPENAI_API_KEY")
+        """Register essential LangChain models using unified config"""
+        logger.info("Registering LangChain models with unified configuration")
         
-        if api_key == PLACEHOLDER:
-            logger.warning("No OpenAI API key found, skipping LangChain model registration")
-            return
+        # Import the unified OpenAI config
+        try:
+            from configs.config_main import openai_config
             
-        api_base = self._check_local_api_base(local_api_base_name="SKYWORK_AZURE_US_API_BASE",
-                                            remote_api_base_name="OPENAI_API_BASE")
+            # Use environment variable if available, otherwise use config default
+            api_key = os.getenv("OPENAI_API_KEY", openai_config.get("api_key", ""))
+            api_base = os.getenv("OPENAI_API_BASE", openai_config.get("api_base_url", "https://api.openai.com/v1"))
+            
+            if not api_key or api_key == PLACEHOLDER:
+                logger.warning("No OpenAI API key found for LangChain models")
+                return
+        except ImportError:
+            # Fallback to original method
+            api_key = self._check_local_api_key(local_api_key_name="SKYWORK_API_KEY",
+                                                remote_api_key_name="OPENAI_API_KEY")
+            api_base = self._check_local_api_base(local_api_base_name="SKYWORK_AZURE_US_API_BASE",
+                                                remote_api_base_name="OPENAI_API_BASE")
         
         try:
             # LangChain ChatOpenAI model
