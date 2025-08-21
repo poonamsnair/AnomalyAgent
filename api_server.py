@@ -59,8 +59,8 @@ try:
     
     # Verify registrations
     from src.registry import AGENT, TOOL
-    agent_names = list(AGENT._modules.keys())
-    tool_names = list(TOOL._modules.keys())
+    agent_names = list(AGENT.module_dict.keys()) if hasattr(AGENT, 'module_dict') else []
+    tool_names = list(TOOL.module_dict.keys()) if hasattr(TOOL, 'module_dict') else []
     logger.info(f"Registered agents: {agent_names}")
     logger.info(f"Registered tools: {tool_names}")
     
